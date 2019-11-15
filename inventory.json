@@ -1,0 +1,41 @@
+{
+  "items": [
+    {
+      "id": "A1",
+      "name": "PRINGLES | Grab & Go! Sour Cream & Onion Flavour",
+      "price": 1.5,
+      "stock": 20
+    },
+    {
+      "id": "A2",
+      "name": "Ding Dong Snack Mix",
+      "price": 2,
+      "stock": 15
+    },
+    {
+      "id": "A3",
+      "name": "KETTLE | Sea Salt",
+      "price": 2,
+      "stock": 10
+    },
+    {
+      "id": "A4",
+      "name": "KETTLE | New York Cheddar",
+      "price": 2,
+      "stock": 10
+    },
+    {
+      "id": "A5",
+      "name": "KETTLE | Sea Salt & Vinegar",
+      "price": 2,
+      "stock": 10
+    }
+  ],
+  "balance": {
+    "2": 100,
+    "1": 100,
+    "0.25": 100,
+    "0.1": 100,
+    "0.05": 100
+  }
+}
