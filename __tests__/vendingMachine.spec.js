@@ -7,42 +7,54 @@ describe("Vending Machine", () => {
     // Reset inventory
     vending = new VendingMachine(inventory);
   });
-  //
-  describe("when inputMoney={toonie: 2} and itemSelected=B2", () => {
+
+  describe("when inputMoney={toonie: 2}", () => {
     const inputMoney = {
       toonie: 2
     };
-    const itemSelected = "B2";
-    //
+    // jest async 1
     it("should display $4.00", () => {
-      expect(vending.insertedMoney(inputMoney)).toBe(4);
+      expect.assertions(1);
+      return vending
+        .insertedMoney(inputMoney)
+        .then(result => expect(result).toBe(4));
     });
-    //
+  });
 
+  describe("when inputMoney={loonie: 1, quarter: 2} and itemSelected=B2", () => {
+    const inputMoney = {
+      loonie: 1,
+      quarter: 2
+    };
+    const itemSelected = "B2";
+    // jest async 2
     it("should throw an error - Not a valid item", () => {
-      expect(() => {
-        vending.findItemByID(itemSelected, 4).toThrow();
+      expect.assertions(1);
+      const money = vending.insertedMoney(inputMoney);
+      return expect(vending.findItemByID(itemSelected, money)).rejects.toEqual({
+        error: "There is no item matches to B2"
       });
     });
   });
-  //
+
   describe("when inputMoney={loonie: 1} and itemSelected=A3", () => {
     const inputMoney = {
       loonie: 1
     };
     const itemSelected = "A3";
-    //
-    it("should display $1.00", () => {
-      expect(vending.insertedMoney(inputMoney)).toBe(1);
-    });
-    //
-    it("should throw an error - Not enough money", () => {
-      expect(() => {
-        vending.findItemByID(itemSelected, 1).toThrow();
-      });
+    // jest async 3
+    it("should throw an error - Not enough money", async () => {
+      expect.assertions(1);
+      try {
+        const money = await vending.insertedMoney(inputMoney);
+        await vending.findItemByID(itemSelected, money);
+      } catch (e) {
+        expect(e).toEqual({
+          error: "Please insert $1.00 more"
+        });
+      }
     });
   });
-  //
 
   describe("when inputMoney={toonie: 2, loonie: 1} and itemSelected=A1", () => {
     const inputMoney = {
@@ -50,46 +62,84 @@ describe("Vending Machine", () => {
       loonie: 1
     };
     const itemSelected = "A1";
-    //
-    it("should display $5.00", () => {
-      expect(vending.insertedMoney(inputMoney)).toBe(5);
-    });
-    //
     it("should find PRINGLES | Grab & Go! Sour Cream & Onion Flavour", () => {
-      expect(vending.findItemByID(itemSelected, 5)).toEqual(
-        expect.objectContaining({
-          id: "A1",
-          name: "PRINGLES | Grab & Go! Sour Cream & Onion Flavour",
-          price: 1.5,
-          stock: 20
-        })
+      expect.assertions(1);
+      const money = vending.insertedMoney(inputMoney);
+      return vending.findItemByID(itemSelected, money).then(result =>
+        expect(result).toEqual(
+          expect.objectContaining({
+            id: "A1",
+            name: "PRINGLES | Grab & Go! Sour Cream & Onion Flavour",
+            price: 1.5,
+            stock: 20
+          })
+        )
       );
     });
-    //
-    it(`shoud return 
-        change = { remain: 0, toonie: 1, loonie: 1, quarter: 2 }
-        returnedItem = PRINGLES | Grab & Go! Sour Cream & Onion Flavour
-        inventory = Object
-      `, () => {
-      expect(vending.dispenseItem(itemSelected, inputMoney)).toEqual(
+  });
+
+  describe("when inputMoney={toonie: 2, loonie: 2, quarter: 3} and itemSelected=A4", () => {
+    const inputMoney = {
+      toonie: 2,
+      loonie: 2,
+      quarter: 3
+    };
+    const itemSelected = "A4";
+    it("should return {changeAmount: 4.75, toonie: 2, quarter: 3}", async () => {
+      expect.assertions(1);
+      const money = await vending.insertedMoney(inputMoney);
+      const item = await vending.findItemByID(itemSelected, money);
+      const result = await vending.returnChange(money, item);
+      expect(result).toEqual(
         expect.objectContaining({
-          change: expect.any(Object),
-          returnedItem: "PRINGLES | Grab & Go! Sour Cream & Onion Flavour"
+          changeAmount: "$4.75",
+          toonie: 2,
+          quarter: 3
         })
       );
     });
   });
-  //
+
+  describe("when inputMoney={toonie: 1, loonie: 2, quarter: 3} and itemSelected=A3", () => {
+    const inputMoney = {
+      toonie: 1,
+      loonie: 2,
+      quarter: 3
+    };
+    const itemSelected = "A3";
+    it(`should return 
+      {
+        change: {
+          changeAmount: $2.75,
+          quarter: 3,
+          toonie: 1
+        },
+        returnedItem: KETTLE | Sea Salt
+      }`, async () => {
+      expect.assertions(1);
+      const result = await vending.dispenseItem(inputMoney, itemSelected);
+      expect(result).toEqual(
+        expect.objectContaining({
+          change: {
+            changeAmount: "$2.75",
+            quarter: 3,
+            toonie: 1
+          },
+          returnedItem: "KETTLE | Sea Salt"
+        })
+      );
+    });
+  });
+
   describe("display all the items and specifications of the vending machine", () => {
     it("should return all information of the vending machine", () => {
       expect(vending.displayItems()).toEqual(expect.anything());
     });
   });
-  //
+
   describe("display how much money the vending machine has", () => {
     it("should return the balance of the vending maching", () => {
       expect(vending.currentBalance()).toEqual(expect.anything());
     });
   });
-  //
 });
