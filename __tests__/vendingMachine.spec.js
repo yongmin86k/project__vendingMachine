@@ -165,6 +165,58 @@ describe("Vending Machine", () => {
     });
   });
 
+  describe("when refillItems= {A1: 5, A2: 5, A3: 5}", () => {
+    const refillItems = {
+      A1: 5,
+      A2: 5,
+      A3: 5
+    };
+    it(`should return the updated item inventory list`, async () => {
+      //
+      expect.assertions(1);
+      await vending.refillInventory(refillItems).then(result =>
+        expect(result).toEqual([
+          {
+            id: "A1",
+            name: "PRINGLES | Grab & Go! Sour Cream & Onion Flavour",
+            price: 1.5,
+            stock: 25,
+            maxStock: 30
+          },
+          {
+            id: "A2",
+            name: "Ding Dong Snack Mix",
+            price: 2,
+            stock: 20,
+            maxStock: 20
+          },
+          {
+            id: "A3",
+            name: "KETTLE | Sea Salt",
+            price: 2,
+            stock: 14,
+            maxStock: 15
+          },
+          {
+            id: "A4",
+            name: "KETTLE | New York Cheddar",
+            price: 2,
+            stock: 10,
+            maxStock: 15
+          },
+          {
+            id: "A5",
+            name: "KETTLE | Sea Salt & Vinegar",
+            price: 2,
+            stock: 10,
+            maxStock: 15
+          }
+        ])
+      );
+      //
+    });
+  });
+  //
   describe("display all the items and specifications of the vending machine", () => {
     it("should return all information of the vending machine", () => {
       expect(vending.displayItems()).toEqual(expect.anything());
