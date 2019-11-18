@@ -4,7 +4,6 @@ let vending;
 
 describe("Vending Machine", () => {
   beforeEach(() => {
-    // Reset inventory
     vending = new VendingMachine(inventory);
   });
 
@@ -12,7 +11,6 @@ describe("Vending Machine", () => {
     const inputMoney = {
       toonie: 2
     };
-    // jest async 1
     it("should display $4.00", () => {
       expect.assertions(1);
       return vending
@@ -27,7 +25,6 @@ describe("Vending Machine", () => {
       quarter: 2
     };
     const itemSelected = "Z2";
-    // jest async 2
     it("should throw an error - Not a valid item", () => {
       expect.assertions(1);
       const money = vending.insertedMoney(inputMoney);
@@ -42,7 +39,6 @@ describe("Vending Machine", () => {
       loonie: 1
     };
     const itemSelected = "A3";
-    // jest async 3
     it("should throw an error - Not enough money", async () => {
       expect.assertions(1);
       try {
@@ -135,15 +131,7 @@ describe("Vending Machine", () => {
       quarter: 3
     };
     const itemSelected = "A3";
-    it(`should return 
-      {
-        change: {
-          changeAmount: $2.75,
-          quarter: 3,
-          toonie: 1
-        },
-        returnedItem: KETTLE | Sea Salt
-      }`, async () => {
+    it(`should return {change: {changeAmount: $2.75, quarter: 3, toonie: 1}, returnedItem: KETTLE | Sea Salt}`, async () => {
       try {
         expect.assertions(1);
         const result = await vending.dispenseItem(inputMoney, itemSelected);
@@ -180,35 +168,45 @@ describe("Vending Machine", () => {
             name: "PRINGLES | Grab & Go! Sour Cream & Onion Flavour",
             price: 1.5,
             stock: 25,
-            maxStock: 30
+            maxStock: 30,
+            img:
+              "https://assets.shop.loblaws.ca/products_jpeg/20666182003/en/20666182003_lrg_1_@1x.jpg"
           },
           {
             id: "A2",
             name: "Ding Dong Snack Mix",
             price: 2,
             stock: 20,
-            maxStock: 20
+            maxStock: 20,
+            img:
+              "https://assets.shop.loblaws.ca/products_jpeg/20873128/en/20873128_lrg_1_@1x.jpg"
           },
           {
             id: "A3",
             name: "KETTLE | Sea Salt",
             price: 2,
             stock: 14,
-            maxStock: 15
+            maxStock: 15,
+            img:
+              "https://assets.shop.loblaws.ca/products_jpeg/20887607002/en/20887607002_lrg_1_@1x.jpg"
           },
           {
             id: "A4",
             name: "KETTLE | New York Cheddar",
             price: 2,
             stock: 10,
-            maxStock: 15
+            maxStock: 15,
+            img:
+              "https://assets.shop.loblaws.ca/products_jpeg/20887607001/en/20887607001_lrg_1_@1x.jpg"
           },
           {
             id: "A5",
             name: "KETTLE | Sea Salt & Vinegar",
             price: 2,
             stock: 10,
-            maxStock: 15
+            maxStock: 15,
+            img:
+              "https://assets.shop.loblaws.ca/products_jpeg/20887607003/en/20887607003_lrg_1_@1x.jpg"
           }
         ])
       );
@@ -223,25 +221,15 @@ describe("Vending Machine", () => {
       dime: 50,
       nickel: 50
     };
-    it(`should return 
-      {
-        "current": "$250.00", 
-        "hasCoins": {
-          "dime": 150, 
-          "loonie": 70, 
-          "nickel": 150, 
-          "quarter": 70, 
-          "toonie": 70
-        }
-      }`, async () => {
+    it(`should return {current: "$252.00", hasCoins: {toonie: 70, loonie: 72, quarter: 70, dime: 150, nickel: 150}}`, async () => {
       expect.assertions(1);
       await vending.resupplyCoins(resupplyCoins).then(result =>
         expect(result).toEqual(
           expect.objectContaining({
-            current: "$250.00",
+            current: "$252.00",
             hasCoins: {
               toonie: 70,
-              loonie: 70,
+              loonie: 72,
               quarter: 70,
               dime: 150,
               nickel: 150

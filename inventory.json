@@ -5,35 +5,40 @@
       "name": "PRINGLES | Grab & Go! Sour Cream & Onion Flavour",
       "price": 1.5,
       "stock": 20,
-      "maxStock": 30
+      "maxStock": 30,
+      "img": "https://assets.shop.loblaws.ca/products_jpeg/20666182003/en/20666182003_lrg_1_@1x.jpg"
     },
     {
       "id": "A2",
       "name": "Ding Dong Snack Mix",
       "price": 2,
       "stock": 15,
-      "maxStock": 20
+      "maxStock": 20,
+      "img": "https://assets.shop.loblaws.ca/products_jpeg/20873128/en/20873128_lrg_1_@1x.jpg"
     },
     {
       "id": "A3",
       "name": "KETTLE | Sea Salt",
       "price": 2,
       "stock": 10,
-      "maxStock": 15
+      "maxStock": 15,
+      "img": "https://assets.shop.loblaws.ca/products_jpeg/20887607002/en/20887607002_lrg_1_@1x.jpg"
     },
     {
       "id": "A4",
       "name": "KETTLE | New York Cheddar",
       "price": 2,
       "stock": 10,
-      "maxStock": 15
+      "maxStock": 15,
+      "img": "https://assets.shop.loblaws.ca/products_jpeg/20887607001/en/20887607001_lrg_1_@1x.jpg"
     },
     {
       "id": "A5",
       "name": "KETTLE | Sea Salt & Vinegar",
       "price": 2,
       "stock": 10,
-      "maxStock": 15
+      "maxStock": 15,
+      "img": "https://assets.shop.loblaws.ca/products_jpeg/20887607003/en/20887607003_lrg_1_@1x.jpg"
     }
   ],
   "hasCoins": {

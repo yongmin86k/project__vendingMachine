@@ -1,7 +1,17 @@
 {
   "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-eslint": "^6.0.0",
+    "gulp-prettyerror": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-terser": "^1.2.0",
     "jest": "^24.9.0",
-    "jest-cli": "^24.9.0"
+    "jest-cli": "^24.9.0",
+    "webpack-stream": "^5.2.1"
   },
   "scripts": {
     "test": "jest --verbose"

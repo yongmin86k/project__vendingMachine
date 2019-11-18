@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vending Machine</title>
+    <link rel="stylesheet" href="/build/css/style.min.css" />
+  </head>
+  <body>
+    <div class="machine">
+      <div class="container">
+        <div id="itemLists" class="vending-lists">
+          <!-- Loop starts
+            <div class="list-container">
+                <div class="list-img">
+                <img src="${item.img}"/>
+                </div>
+                <div class="list-info">
+                <h1 class="list-id">${item.id}</h1>
+                <div class="list-price">$${item.price.toFixed(2)}</div>
+                </div>
+            </div>
+             -->
+        </div>
+        <div class="operation-buttons">
+          <div class="title">
+            <p>Insert</p>
+          </div>
+          <div class="insertedMoney">
+            <div id="money" class="displayText">
+              $0.00
+            </div>
+          </div>
+          <div class="title">
+            <p>Select</p>
+          </div>
+          <div class="selectedItem">
+            <div id="id_1" class="displayText">
+              -
+            </div>
+            <div id="id_2" class="displayText">
+              -
+            </div>
+          </div>
+          <div class="pads">
+            <p>a</p>
+            <p>b</p>
+            <p>c</p>
+            <p>d</p>
+            <p>e</p>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+          </div>
+          <div class="coinHole"></div>
+          <div class="returnChange"></div>
+          <div class="dispenseItem"></div>
+        </div>
+      </div>
+      <div class="legs">
+        <p></p>
+        <p></p>
+      </div>
+    </div>
+    <div class="instructions">
+      <section>
+        <h2>1. Insert coins</h2>
+        <div id="cadCoins" class="layout">
+          <div id="toonie">
+            <img src="./images/ca_coin_toonie.png" alt="$2.00" />
+            <button>$2.00</button>
+          </div>
+          <div id="loonie">
+            <img src="./images/ca_coin_loonie.png" alt="$1.00" />
+            <button>$1.00</button>
+          </div>
+          <div id="quarter">
+            <img src="./images/ca_coin_quater.png" alt="$0.25" />
+            <button>$0.25</button>
+          </div>
+          <div id="dime">
+            <img src="./images/ca_coin_dime.png" alt="$0.10" />
+            <button>$0.10</button>
+          </div>
+          <div id="nickel">
+            <img src="./images/ca_coin_nickel.png" alt="$0.05" />
+            <button>$0.05</button>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Press the item number</h2>
+        <div id="itemID" class="layout">
+          <button value="A">a</button>
+          <button value="B">b</button>
+          <button value="C">c</button>
+          <button value="D">d</button>
+          <button value="E">e</button>
+          <button value="1">1</button>
+          <button value="2">2</button>
+          <button value="3">3</button>
+          <button value="4">4</button>
+          <button value="5">5</button>
+        </div>
+      </section>
+      <section>
+        <h2>3. Confirm</h2>
+        <button id="vend">Vend</button>
+      </section>
+      <section id="result"></section>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript" src="./build/js/bundle.min.js"></script>
+  </body>
+</html>

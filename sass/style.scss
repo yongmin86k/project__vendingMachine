@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Cabin&display=swap");
+
+$mainColor: #6e6e6e;
+$darkColor: #4a4a4a;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cabin", sans-serif;
+}
+
+img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-family: "VT323", monospace;
+  text-transform: uppercase;
+  font-size: 36px;
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+button {
+  cursor: pointer;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+body {
+  display: flex;
+  background-color: aliceblue;
+  align-items: center;
+  justify-content: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.machine {
+  width: 300px;
+
+  .container {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    background: $mainColor;
+    padding: 32px;
+
+    .vending-lists {
+      flex: 1 0 auto;
+      padding: 8px;
+      border-radius: 4px;
+      height: 100%;
+      background-color: $darkColor;
+      margin-right: 16px;
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      grid-row-gap: 8px;
+    }
+
+    .list-container {
+      width: 100%;
+      display: flex;
+
+      .list-img {
+        flex: none;
+        width: 72px;
+        padding: 8px;
+        margin-right: 4px;
+        text-align: center;
+        border-radius: 2px;
+        background-color: white;
+      }
+      .list-info {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+        background-color: $darkColor;
+        color: white;
+        border-radius: 2px;
+        background-color: #3a3a3a;
+
+        .list-id {
+          flex: 1 0 auto;
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+        }
+
+        .list-price {
+          width: 100%;
+          text-align: center;
+          padding: 8px 0;
+          font-size: 12px;
+          letter-spacing: 0.5px;
+          white-space: nowrap;
+          border-top: 1px solid $darkColor;
+        }
+      }
+    }
+
+    .operation-buttons {
+      position: relative;
+      flex: none;
+      padding-top: 60px;
+      width: 80px;
+      border-radius: 4px;
+      background-color: $darkColor;
+      text-align: center;
+      color: white;
+
+      .title {
+        margin-top: 24px;
+        font-size: 10px;
+        text-transform: uppercase;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      .insertedMoney,
+      .selectedItem {
+        padding: 4px 8px;
+      }
+      .selectedItem {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 4px;
+      }
+      .displayText {
+        width: 100%;
+        font-family: "VT323", monospace;
+        font-size: 20px;
+        background-color: rgb(0, 87, 132);
+        padding: 4px 0;
+        border-radius: 2px;
+        color: rgb(178, 220, 239);
+        text-shadow: 0 0 8px rgba(178, 220, 239, 0.8);
+      }
+      .pads {
+        width: 64px;
+        margin: 0 auto;
+        margin-top: 8px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: 2px;
+        grid-row-gap: 2px;
+        p {
+          justify-self: center;
+          border-radius: 50%;
+          width: 10px;
+          height: 10px;
+          line-height: 10px;
+          color: $darkColor;
+          background-color: white;
+          font-size: 6px;
+          text-transform: uppercase;
+        }
+      }
+      .coinHole {
+        background-color: $mainColor;
+        margin-top: 12px;
+        margin-left: 64px;
+        width: 6px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .returnChange {
+        position: absolute;
+        bottom: 80px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        border-radius: 2px;
+        background-color: $mainColor;
+      }
+      .dispenseItem {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 8px;
+        border-radius: 2px;
+        background-color: $mainColor;
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+  .legs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 16px;
+    p {
+      background-color: $darkColor;
+      width: 12px;
+      height: 40px;
+    }
+  }
+}
+
+.instructions {
+  margin-left: 24px;
+  section {
+    margin-top: 36px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .layout {
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+    text-align: center;
+  }
+  #result {
+    & > div {
+      margin-bottom: 16px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  #coins {
+    span {
+      display: inline-block;
+      margin-right: 12px;
+    }
+  }
+  p {
+    margin-bottom: 8px;
+  }
+}
