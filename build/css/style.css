@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Cabin&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Cabin", sans-serif; }
+
+img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto; }
+
+h1 {
+  font-family: "VT323", monospace;
+  text-transform: uppercase;
+  font-size: 36px;
+  white-space: nowrap;
+  margin-bottom: 4px; }
+
+button {
+  cursor: pointer;
+  padding: 4px 8px;
+  text-transform: uppercase; }
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: aliceblue;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 100vw;
+  min-height: 100vh; }
+
+.machine {
+  width: 300px; }
+  .machine .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    background: #6e6e6e;
+    padding: 32px; }
+    .machine .container .vending-lists {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 0 auto;
+              flex: 1 0 auto;
+      padding: 8px;
+      border-radius: 4px;
+      height: 100%;
+      background-color: #4a4a4a;
+      margin-right: 16px;
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      grid-row-gap: 8px; }
+    .machine .container .list-container {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      .machine .container .list-container .list-img {
+        -webkit-box-flex: 0;
+            -ms-flex: none;
+                flex: none;
+        width: 72px;
+        padding: 8px;
+        margin-right: 4px;
+        text-align: center;
+        border-radius: 2px;
+        background-color: white; }
+      .machine .container .list-container .list-info {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-flex: 1;
+            -ms-flex: 1 0 auto;
+                flex: 1 0 auto;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        background-color: #4a4a4a;
+        color: white;
+        border-radius: 2px;
+        background-color: #3a3a3a; }
+        .machine .container .list-container .list-info .list-id {
+          -webkit-box-flex: 1;
+              -ms-flex: 1 0 auto;
+                  flex: 1 0 auto;
+          width: 100%;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: end;
+              -ms-flex-align: end;
+                  align-items: flex-end;
+          -webkit-box-pack: center;
+              -ms-flex-pack: center;
+                  justify-content: center; }
+        .machine .container .list-container .list-info .list-price {
+          width: 100%;
+          text-align: center;
+          padding: 8px 0;
+          font-size: 12px;
+          letter-spacing: 0.5px;
+          white-space: nowrap;
+          border-top: 1px solid #4a4a4a; }
+    .machine .container .operation-buttons {
+      position: relative;
+      -webkit-box-flex: 0;
+          -ms-flex: none;
+              flex: none;
+      padding-top: 60px;
+      width: 80px;
+      border-radius: 4px;
+      background-color: #4a4a4a;
+      text-align: center;
+      color: white; }
+      .machine .container .operation-buttons .title {
+        margin-top: 24px;
+        font-size: 10px;
+        text-transform: uppercase; }
+        .machine .container .operation-buttons .title:first-child {
+          margin-top: 0; }
+      .machine .container .operation-buttons .insertedMoney,
+      .machine .container .operation-buttons .selectedItem {
+        padding: 4px 8px; }
+      .machine .container .operation-buttons .selectedItem {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 4px; }
+      .machine .container .operation-buttons .displayText {
+        width: 100%;
+        font-family: "VT323", monospace;
+        font-size: 20px;
+        background-color: #005784;
+        padding: 4px 0;
+        border-radius: 2px;
+        color: #b2dcef;
+        text-shadow: 0 0 8px rgba(178, 220, 239, 0.8); }
+      .machine .container .operation-buttons .pads {
+        width: 64px;
+        margin: 0 auto;
+        margin-top: 8px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: 2px;
+        grid-row-gap: 2px; }
+        .machine .container .operation-buttons .pads p {
+          justify-self: center;
+          border-radius: 50%;
+          width: 10px;
+          height: 10px;
+          line-height: 10px;
+          color: #4a4a4a;
+          background-color: white;
+          font-size: 6px;
+          text-transform: uppercase; }
+      .machine .container .operation-buttons .coinHole {
+        background-color: #6e6e6e;
+        margin-top: 12px;
+        margin-left: 64px;
+        width: 6px;
+        height: 12px;
+        border-radius: 50%; }
+      .machine .container .operation-buttons .returnChange {
+        position: absolute;
+        bottom: 80px;
+        right: 8px;
+        width: 14px;
+        height: 14px;
+        border-radius: 2px;
+        background-color: #6e6e6e; }
+      .machine .container .operation-buttons .dispenseItem {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+        bottom: 8px;
+        border-radius: 2px;
+        background-color: #6e6e6e;
+        width: 64px;
+        height: 64px; }
+  .machine .legs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 100%;
+    padding: 0 16px; }
+    .machine .legs p {
+      background-color: #4a4a4a;
+      width: 12px;
+      height: 40px; }
+
+.instructions {
+  margin-left: 24px; }
+  .instructions section {
+    margin-top: 36px; }
+    .instructions section:first-child {
+      margin-top: 0; }
+  .instructions .layout {
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+    text-align: center; }
+  .instructions #result > div {
+    margin-bottom: 16px; }
+    .instructions #result > div:last-child {
+      margin-bottom: 0; }
+  .instructions #coins span {
+    display: inline-block;
+    margin-right: 12px; }
+  .instructions p {
+    margin-bottom: 8px; }
