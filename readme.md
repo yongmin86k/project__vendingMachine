@@ -11,7 +11,7 @@ A vending machine app based on Javascript ES6(ECMAScript 2015) class
 
 ## Test results
 
-| Run test by `yarn test`
+Run test by `yarn test`
 
 ![Preview](images/preview_0.png)
 
