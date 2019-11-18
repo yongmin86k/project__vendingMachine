@@ -172,7 +172,6 @@ describe("Vending Machine", () => {
       A3: 5
     };
     it(`should return the updated item inventory list`, async () => {
-      //
       expect.assertions(1);
       await vending.refillInventory(refillItems).then(result =>
         expect(result).toEqual([
@@ -213,10 +212,46 @@ describe("Vending Machine", () => {
           }
         ])
       );
-      //
     });
   });
-  //
+
+  describe("when resupplyCoins= {toonie: 50, loonie: 50, quarter: 50, dime: 50, nickel: 50}", () => {
+    const resupplyCoins = {
+      toonie: 50,
+      loonie: 50,
+      quarter: 50,
+      dime: 50,
+      nickel: 50
+    };
+    it(`should return 
+      {
+        "current": "$250.00", 
+        "hasCoins": {
+          "dime": 150, 
+          "loonie": 70, 
+          "nickel": 150, 
+          "quarter": 70, 
+          "toonie": 70
+        }
+      }`, async () => {
+      expect.assertions(1);
+      await vending.resupplyCoins(resupplyCoins).then(result =>
+        expect(result).toEqual(
+          expect.objectContaining({
+            current: "$250.00",
+            hasCoins: {
+              toonie: 70,
+              loonie: 70,
+              quarter: 70,
+              dime: 150,
+              nickel: 150
+            }
+          })
+        )
+      );
+    });
+  });
+
   describe("display all the items and specifications of the vending machine", () => {
     it("should return all information of the vending machine", () => {
       expect(vending.displayItems()).toEqual(expect.anything());
