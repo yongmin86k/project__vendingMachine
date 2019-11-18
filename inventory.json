@@ -4,38 +4,44 @@
       "id": "A1",
       "name": "PRINGLES | Grab & Go! Sour Cream & Onion Flavour",
       "price": 1.5,
-      "stock": 20
+      "stock": 20,
+      "maxStock": 30
     },
     {
       "id": "A2",
       "name": "Ding Dong Snack Mix",
       "price": 2,
-      "stock": 15
+      "stock": 15,
+      "maxStock": 20
     },
     {
       "id": "A3",
       "name": "KETTLE | Sea Salt",
       "price": 2,
-      "stock": 10
+      "stock": 10,
+      "maxStock": 15
     },
     {
       "id": "A4",
       "name": "KETTLE | New York Cheddar",
       "price": 2,
-      "stock": 10
+      "stock": 10,
+      "maxStock": 15
     },
     {
       "id": "A5",
       "name": "KETTLE | Sea Salt & Vinegar",
       "price": 2,
-      "stock": 10
+      "stock": 10,
+      "maxStock": 15
     }
   ],
   "hasCoins": {
-    "toonie": 100,
-    "loonie": 100,
-    "quarter": 100,
+    "toonie": 20,
+    "loonie": 20,
+    "quarter": 20,
     "dime": 100,
     "nickel": 100
-  }
+  },
+  "maxCoinEach": 500
 }

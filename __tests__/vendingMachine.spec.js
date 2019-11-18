@@ -26,13 +26,13 @@ describe("Vending Machine", () => {
       loonie: 1,
       quarter: 2
     };
-    const itemSelected = "B2";
+    const itemSelected = "Z2";
     // jest async 2
     it("should throw an error - Not a valid item", () => {
       expect.assertions(1);
       const money = vending.insertedMoney(inputMoney);
       return expect(vending.findItemByID(itemSelected, money)).rejects.toEqual({
-        error: "There is no item matches to B2"
+        error: "There is no item matches to Z2"
       });
     });
   });
@@ -62,7 +62,7 @@ describe("Vending Machine", () => {
       loonie: 1
     };
     const itemSelected = "A1";
-    it("should find PRINGLES | Grab & Go! Sour Cream & Onion Flavour", () => {
+    it("should return the item= PRINGLES | Grab & Go! Sour Cream & Onion Flavour", () => {
       expect.assertions(1);
       const money = vending.insertedMoney(inputMoney);
       return vending.findItemByID(itemSelected, money).then(result =>
@@ -85,18 +85,46 @@ describe("Vending Machine", () => {
       quarter: 3
     };
     const itemSelected = "A4";
-    it("should return {changeAmount: 4.75, toonie: 2, quarter: 3}", async () => {
+    it("should return the change= {changeAmount: 4.75, toonie: 2, quarter: 3}", async () => {
       expect.assertions(1);
       const money = await vending.insertedMoney(inputMoney);
       const item = await vending.findItemByID(itemSelected, money);
-      const result = await vending.returnChange(money, item);
-      expect(result).toEqual(
-        expect.objectContaining({
-          changeAmount: "$4.75",
-          toonie: 2,
-          quarter: 3
-        })
+
+      return vending.returnChange(money, item).then(result =>
+        expect(result).toEqual(
+          expect.objectContaining({
+            changeAmount: "$4.75",
+            toonie: 2,
+            quarter: 3
+          })
+        )
       );
+    });
+  });
+
+  describe("when inputMoney={toonie: 2} and itemSelecfted=A1, but there isn't enough cash in the vending machine", () => {
+    const inputMoney = {
+      toonie: 2
+    };
+    const itemSelected = "A1";
+    it("should return the error - No enough change", async () => {
+      try {
+        expect.assertions(1);
+        const money = await vending.insertedMoney(inputMoney);
+        const item = await vending.findItemByID(itemSelected, money);
+        const result = await vending.returnChange(money, item);
+        expect(result).toEqual(
+          expect.objectContaining({
+            changeAmount: "$2.50",
+            quarter: 2,
+            toonie: 1
+          })
+        );
+      } catch (e) {
+        expect(e).toEqual({
+          error: `There is no enough money in the vending machine`
+        });
+      }
     });
   });
 
@@ -116,18 +144,24 @@ describe("Vending Machine", () => {
         },
         returnedItem: KETTLE | Sea Salt
       }`, async () => {
-      expect.assertions(1);
-      const result = await vending.dispenseItem(inputMoney, itemSelected);
-      expect(result).toEqual(
-        expect.objectContaining({
-          change: {
-            changeAmount: "$2.75",
-            quarter: 3,
-            toonie: 1
-          },
-          returnedItem: "KETTLE | Sea Salt"
-        })
-      );
+      try {
+        expect.assertions(1);
+        const result = await vending.dispenseItem(inputMoney, itemSelected);
+        expect(result).toEqual(
+          expect.objectContaining({
+            change: {
+              changeAmount: "$2.75",
+              quarter: 3,
+              toonie: 1
+            },
+            returnedItem: "KETTLE | Sea Salt"
+          })
+        );
+      } catch (e) {
+        expect(e).toEqual({
+          error: `A3 is out of service.`
+        });
+      }
     });
   });
 
